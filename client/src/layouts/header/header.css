@@ -1,0 +1,91 @@
+.clickable{
+cursor: pointer;
+}
+
+
+
+.overall-header-container{
+border: 2px solid red;
+height: 10rem;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+gap: 1rem;
+}
+@media screen and (max-width:18.75em) {
+    .overall-header-container{
+        display: flex;
+        flex-direction: column;
+        height: max-content;
+        padding: 1rem;
+    }   
+}
+.right-logo-header-section{
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+
+.logo-graphic{
+width: 8rem;
+height: 8rem;
+}
+@media screen and (max-width:25em) {
+    .logo-graphic{
+        width: 5rem;
+        height: 5rem;
+        }
+}
+.logo-graphic img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.brand-name-h1{
+font-size: 4rem;
+font-weight: bold;
+}
+@media screen and (max-width:25em) {
+    .brand-name-h1{
+        font-size: 2rem;
+    }   
+}
+.nav-links-ul{
+display: flex;
+flex-direction: row;
+gap: 2rem;
+}
+@media screen and (max-width:50em) {
+ .nav-links-ul{
+display: none;
+ }   
+}
+.nav-links-ul li{
+font-size: 1.7rem;
+font-weight: bold;
+}
+
+.left-header-buttons-section{
+display: flex;
+flex-direction: row;
+gap: 2rem;
+align-items: center;
+}
+@media screen and (min-width:50.1em) {
+   .nav-bar-link{
+    display: none;
+   }
+}
+.nav-bar-link h1{
+font-size: 2.5rem;
+}
+.cart-logo,.login-logo{
+padding: 1rem;
+/* box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.3); */
+border: 1px solid rgb(91, 90, 90);
+
+}
+.header-icon{
+font-size: 2rem;
+}
