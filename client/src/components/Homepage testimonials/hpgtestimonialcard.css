@@ -1,0 +1,32 @@
+.overall-homepage-testimonial-card{
+height:max-content;
+padding: 2rem;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.hmpg-testimonial-content{
+    width: 80%;
+}
+.testimonial-description{
+font-size: 1.5rem;
+}
+.testimony-identity{
+
+}
+.testimony-identity ul{
+display: flex;
+flex-direction: row;
+gap:1rem
+}
+.commenter-identity{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.commenter-identity p{
+font-size: 1.5rem;
+}

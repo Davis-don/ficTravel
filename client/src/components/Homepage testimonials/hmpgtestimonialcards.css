@@ -1,0 +1,12 @@
+.overall-homepage-testimonial-cards{
+display: grid;
+grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+gap: 2rem;
+}
+@media screen  and (max-width:18.75em){
+    .overall-homepage-testimonial-cards{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }  
+}

@@ -7,7 +7,7 @@ import { FaStar } from "react-icons/fa";
 
 function Recommendedcard() {
   return (
-    <div className='overall-recommended-card-container clickable container-fluid' onClick={()=>alert("all")}>
+    <div className='overall-recommended-card-container clickable container-fluid'>
         <div className="image-container-recommended">
           <img src={imageTest} alt="hotel" />
           {/* <div className="like-icon clickable" onClick={()=>alert("like")}>

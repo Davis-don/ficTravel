@@ -3,6 +3,7 @@ import Header from '../layouts/header/Header'
 import Hero from '../components/Homepage hero/Hero'
 import Topdestination from '../components/Top destinations/Topdestination'
 import Recommended from '../components/Recommended/Recommended'
+import Homepagetestimonials from '../components/Homepage testimonials/Homepagetestimonials'
 
 function Homepage() {
   return (
@@ -11,6 +12,7 @@ function Homepage() {
      <Hero/>
      <Topdestination/>
      <Recommended/>
+     <Homepagetestimonials/>
         </div>
   )
 }
