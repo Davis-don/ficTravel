@@ -1,0 +1,44 @@
+.overall-destination-card {
+    height: 30rem;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5)
+      ), 
+      url('../../assets/homepage-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease;
+  }
+  .overall-destination-card:hover {
+    transform: scale(1.05); /* Slightly zoom in by 5% */
+  }
+  
+  .overall-destination-card:hover::before {
+    transform: scale(1.05); /* Apply the same subtle zoom effect to the background */
+  }
+  
+  
+.destination-card-content-box{
+width: 80%;
+}
+
+
+  
+.overall-destination-card ul {
+display: flex;
+flex-direction: row;
+gap: 2rem;
+flex-wrap: wrap;
+
+}
+.overall-destination-card ul li{
+font-size: 1.5rem;
+text-wrap: nowrap;
+font-weight: bold;
+}
+
+  

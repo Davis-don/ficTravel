@@ -1,0 +1,120 @@
+.overall-homepage-hero {
+    height: 85vh;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5)
+    ), 
+    url('../../assets/homepage-hero.jpg');
+    background-size: cover;
+    background-position: bottom; 
+}
+
+.homepage-hero-content{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100%;
+}
+.hero-homepage-content-box{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap:1rem;
+}
+.hero-homepage-content-box h1{
+font-size: 7rem;
+}
+@media screen and (max-width:56.25em) {
+    .hero-homepage-content-box h1{
+        font-size: 5rem;
+    }    
+}
+@media screen and (max-width:37.5em) {
+    .hero-homepage-content-box h1{
+        font-size: 3rem;
+    }    
+}
+@media screen and (max-width:21.25em) {
+    .hero-homepage-content-box h1{
+        font-size:8vw;
+    }    
+}
+.hero-homepage-content-box h4{
+font-size: 1.5rem;
+}
+@media screen and (max-width:21.25em) {
+    .hero-homepage-content-box h4{
+        font-size:5vw;
+        text-align: center;
+        }
+}
+.hero-homepage-search{
+background-color:white;
+width: 90vw;
+height: max-content;
+border-radius: 5rem;
+padding: 2rem;
+justify-content: space-between;
+align-items: center;
+gap: 2rem;
+}
+@media screen and (max-width:68.75em) {
+    .hero-homepage-search{
+        display: flex;
+        flex-direction: column;
+
+    }   
+}
+/* @media screen and (max-width:50em) {
+    .hero-homepage-search{
+        width: 95vw;
+        height: 7rem;
+    }   
+} */
+
+
+/* .hero-homepage-search{
+display: flex;
+flex-direction: row;
+} */
+/* @media screen and (max-width:37.5em) {
+    .hero-homepage-search{
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        height: max-content;
+    }   
+} */
+.search-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+@media screen and (max-width:68.75em) {
+    .search-container{
+        border: 1px solid red;
+        width: 100%;
+    }
+}
+.location-hero-homepage{
+
+
+}
+.option-location{
+width: max-content;
+border: 1px solid white;
+}
+
+.search-icon-here{
+font-size: 3rem;
+}
+.submit-search-btn{
+background-color: blue;
+width: 10rem;
+border-radius: 20px;
+padding: 1rem;
+text-align: center;
+}
