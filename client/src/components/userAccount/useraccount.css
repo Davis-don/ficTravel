@@ -1,0 +1,24 @@
+.overall-login-component{
+
+}
+.user-component-header{
+display: flex;
+flex-direction: row;
+padding: 2rem;
+border-bottom: 2px solid black;
+align-items: center;
+gap: 1rem;
+}
+@media screen and (max-width:25em) {
+    .user-component-header{
+        display: flex;
+        flex-direction: column;
+    }
+}
+.nav-links-signup-signin ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    width: 30vw;
+}

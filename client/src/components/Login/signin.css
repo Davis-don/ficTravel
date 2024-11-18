@@ -1,0 +1,17 @@
+.overall-signin-component{
+padding: 2rem;
+}
+.overall-signin-component h1{
+
+} 
+.overall-signin-component form{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.overall-signin-component form input{
+height: 4rem;
+}
+.overall-signin-component form button{
+padding-block: 1rem;
+}

@@ -1,0 +1,17 @@
+.ovearall-signup-container{
+padding: 2rem;
+}
+.ovearall-signup-container{
+
+}
+.ovearall-signup-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; 
+}
+.ovearall-signup-container form input{
+    height: 4rem;
+}
+.ovearall-signup-container form button{
+    padding-block: 1rem;
+}

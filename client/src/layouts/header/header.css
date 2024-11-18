@@ -54,10 +54,51 @@ gap: 2rem;
 display: none;
  }   
 }
-.nav-links-ul li{
-font-size: 1.7rem;
-font-weight: bold;
-}
+.nav-links-ul li {
+    font-size: 1.7rem;
+    font-weight: bold;
+    position: relative; 
+    transition: color 0.3s ease; 
+  }
+  
+  .nav-links-ul li:hover {
+    color: #ff6347; 
+  }
+  
+  .nav-links-ul li::after {
+    content: ""; 
+    position: absolute;
+    left: 0;
+    bottom: -5px; 
+    width: 0;
+    height: 2px;
+    background-color: #ff6347; 
+    transition: width 0.3s ease; 
+  }
+  
+  .nav-links-ul li:hover::after {
+    width: 100%; 
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .left-header-buttons-section{
 display: flex;
