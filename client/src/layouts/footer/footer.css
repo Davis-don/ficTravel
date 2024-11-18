@@ -1,0 +1,21 @@
+.overall-footer-section{
+    border-top: 1px solid rgb(45, 45, 45);
+    background-color: black;
+
+}
+.bottom-copyright-section{
+padding:2rem;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+gap: 1.5rem;
+flex-wrap: wrap;
+}
+.footer-copyright p{
+    font-size: 2rem;
+}
+.payment-cards{
+width: max;
+height: 5rem;
+}
