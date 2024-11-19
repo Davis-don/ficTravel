@@ -6,7 +6,10 @@ import { CiShoppingBasket } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
+import useFormStore from '../../store/userFormStore';
 function Header() {
+    const toggleFormState = useFormStore((state)=>state.toggleForm);
+    const formState = useFormStore((state)=>state.formDisplay)
     const navigate = useNavigate();
   return (
     <div className='overall-header-container container-fluid'>
@@ -37,7 +40,7 @@ function Header() {
             <CiShoppingBasket className='header-icon'/>
             
             </div>
-            <div style={window.location.pathname === '/login' ? { backgroundColor: "orangered",color:"white" } : {}} className="login-logo rounded-circle clickable">
+            <div onClick={()=>toggleFormState()} style={formState ? { backgroundColor: "orangered",color:"white" } : {}} className="login-logo rounded-circle clickable">
             <FaRegUser className='header-icon'/>
             </div>
         </div>

@@ -5,7 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Signin from '../Login/Signin';
 import Signup from '../Createaccount/Signup';
 import { useState } from 'react';
+import useFormStore from '../../store/userFormStore';
 function Useraccount() {
+  const toggleFormState = useFormStore((state)=>state.toggleForm)
   const [signin,setSignin] = useState(true)
   const [signup,setSignup]=useState(false)
 
@@ -13,7 +15,7 @@ function Useraccount() {
   return (
     <div className='overall-login-component'>
         <div className="user-component-header">
-          <div className="close-btn clickable">
+          <div onClick={()=>toggleFormState()} className="close-btn clickable">
           <IoMdClose  className='fs-2'/>
           </div>
           <div className="nav-links-signup-signin">
