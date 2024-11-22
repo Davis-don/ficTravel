@@ -5,7 +5,7 @@ import Recommendedcards from './Recommendedcards'
 function Recommended() {
   return (
     <div className='overall-recommended-section'>
-      <h1>Recommended card </h1>
+      <h1>Recommended Hotels </h1>
         <Recommendedcards/>
         </div>
   )

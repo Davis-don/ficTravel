@@ -1,0 +1,33 @@
+.nav-links-listing-dash ul{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.nav-links-listing-dash ul li{
+    border-bottom: 1px solid black;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+}
+.nav-links-listing-dash ul li:hover{
+background-color: orangered;
+}
+
+
+
+/* Start */
+.right-sidebar-body{
+    width: 100%;
+    height:88vh;
+    overflow: scroll;
+}
+/* .overall-userdasboard-container{
+
+} */
+
+
+
+.overall-usermessage-container{
+width: 100%;
+height: 100%;
+}

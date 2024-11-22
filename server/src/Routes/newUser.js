@@ -2,10 +2,9 @@ import express from 'express'
 import {PrismaClient} from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
-
 const Route = express.Router();
 
-const client = new PrismaClient()
+const client =new PrismaClient()
 
 const newUser = Route.post("/create-account", async (req, res) => {
     try {

@@ -1,0 +1,129 @@
+.overrall-dashboard-page{
+height: 100vh;
+width: 100vw;
+background-color: black;
+overflow: scroll;
+}
+
+.dash-body{
+    display: flex;
+    flex-direction: row;
+}
+.left-sidebar-dashboard{
+width: 30rem;
+height: 100%;
+background-color: #191C24;
+}
+@media screen and (max-width:61.875em) {
+    .left-sidebar-dashboard{
+        position: absolute;
+        z-index: +2;
+    }
+    .right-sidebar-section{
+    position: absolute;
+    z-index: +1;
+    }
+}
+.dash-brandname-section{
+display: flex;
+flex-direction: row;
+padding: 2rem;
+gap: 1rem;
+}
+.logo-icon-dash{
+
+}
+.hotel-icon{
+    color: orangered; 
+    font-size: 3rem;
+}
+.logo-icon-dash img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.brand-dash-name h1{
+color: orangered;
+}
+.user-account-dash-div{
+display: flex;
+flex-direction: row;
+gap: 1rem;
+justify-content: center;
+align-items: center;
+}
+.avatar-section-dash{
+width: 4rem;
+height: 4rem;
+background-color: white;
+}
+
+.nav-links-listing-dash{
+height:80vh;
+/* background-color: red; */
+}
+
+/* left side dashboard */
+.right-sidebar-section{
+width: 100%;
+background-color: black;
+height: 100vh;
+}
+
+.dash-header{
+    height:6rem;
+background-color: #191C24;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding-inline: 4rem;
+}
+.left-dash-header{
+background-color: black;
+width: 4rem;
+height: 4rem;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.menu-icon-dash{
+color: orangered;
+font-size: 2.5rem;
+}
+.right-dash-header ul{
+display: flex;
+flex-direction: row;
+}
+.right-dash-header ul li{
+display: flex;
+flex-direction: row;
+padding: 1rem;
+align-items: center;
+gap: 1.5rem;
+}
+
+.icon-link-dash{
+padding: 1rem;
+background-color:black;
+}
+.li-icon-dash{
+    color: rgb(140, 160, 172);
+    font-size: 1.5rem;
+}
+.name-component-dash{
+    color:rgb(140, 160, 172);
+    font-size: 1.5rem;
+}
+@media screen and (max-width:61.875em) {
+    .name-component-dash{
+        display: none;
+    }   
+}
+.name-component-dash:hover{
+color: orangered;
+}
+.avatar-header-dash{
+width: 4rem;
+height: 4rem;
+}

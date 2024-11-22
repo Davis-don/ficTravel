@@ -67,10 +67,23 @@ function Signin() {
       sessionStorage.setItem("authToken",data.authToken);
       //push user info into a user store;
       addNewUser(data.user);
+      if(data.user.role === "USER"){
       setTimeout(() => {
-        navigate("/account/dashboard")
+        navigate("/user/account")
       }, 3000);
-    }
+     }
+     else if (data.user.role === "ADMIN" ){
+      setTimeout(() => {
+        navigate("/admin/account")
+      }, 3000);
+     }
+     else if (data.user.role === "AGENT" ){
+      setTimeout(() => {
+        navigate("/agent/account")
+      }, 3000);
+     }
+      }
+  
   })
 
   let handleSubmit=(e)=>{

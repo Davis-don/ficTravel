@@ -4,12 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import imageTest from '../../assets/homepage-hero.jpg'
 import { FcLike } from "react-icons/fc";
 import { FaStar } from "react-icons/fa";
+import { NavLink, useNavigate } from 'react-router-dom';
 
-function Recommendedcard() {
+function Recommendedcard({attraction}) {
+  const navigate = useNavigate ();
+
   return (
-    <div className='overall-recommended-card-container clickable container-fluid'>
+    <div onClick={ ()=>navigate("/recommended", { state: attraction })} className='overall-recommended-card-container clickable container-fluid'>
         <div className="image-container-recommended">
-          <img src={imageTest} alt="hotel" />
+          <img src={attraction.primaryPhoto.small} alt="hotel" />
           {/* <div className="like-icon clickable" onClick={()=>alert("like")}>
             <h2><FcLike className='like-actual-icon'/></h2>
 
@@ -22,13 +25,13 @@ function Recommendedcard() {
             <li><FaStar className='fs-3 star-icon'/></li>
           </ul>
           <div className="recommended-title-description">
-            <h3>Constello Casole Hotel</h3>
-            <p className='describe-card text-secondary'>Nairobi city</p>
+            <h3>{attraction.name}</h3>
+            <p className='describe-card text-secondary'></p>
           </div>
         </div>
 
         <div className="recommended-footer-section">
-       <h4><span className='text-secondary'>From</span> <span>KES 10,000</span><span className='text-secondary'>/ 1 night(s)</span></h4>
+       <h4><span className='text-secondary'>From</span> <span>{attraction.representativePrice.currency + " " + attraction.representativePrice.chargeAmount}</span></h4>
         </div>
     </div>
   )

@@ -20,7 +20,7 @@ function Signup() {
       fullName:"",
       email:"",
       password:"",
-      confirmPassword:""
+      confirmPassword:"",
     })
 
     let handleChange = (e)=>{

@@ -1,0 +1,41 @@
+.overall-chat-component{
+height: 85vh;
+position: relative;
+padding: 1rem;
+}
+.chat-header{
+position: absolute;
+z-index: +1;
+}
+.chat-body{
+position: absolute;
+z-index: +1;
+top:5rem;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+padding-bottom: 10rem;
+}
+.chat-footer{
+position: fixed;
+z-index: +2;
+top: 87vh;
+display: flex;
+flex-direction: row;
+gap: 1rem;
+width: 70%;
+}
+.chat-footer input{
+height: 4rem;
+}
+/* chatcard */
+.overall-chat-card{
+    background-color: orangered;
+    padding:1rem;
+    width: max-content;
+    border-radius: 20px;
+
+}
+.chatcard-body p{
+font-size: 1.5rem;
+}

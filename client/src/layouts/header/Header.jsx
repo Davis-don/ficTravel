@@ -17,9 +17,12 @@ function Header() {
             <div className="logo-graphic">
                 <img src={bLogo} alt="logo of letter B" />
             </div>
+
+        {/* code to reuse */}
             <div className="brand-name" onClick={()=>navigate("/")}>
                 <h1 className='brand-name-h1'>ookHut</h1>
             </div>
+            {/* end */}
         </div>
         <div className="center-header-nav-links-section">
             <ul className='nav-links-ul list-unstyled' >
