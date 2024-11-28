@@ -1,0 +1,32 @@
+.overall-bookings-page{
+    position: relative;
+    background-color: black;
+    padding: 2rem;
+    height: 70vh;
+    overflow: scroll;
+}
+
+.booking-content-manage-container{
+position: absolute;
+z-index: +1;
+}
+.payment-intergration-ui{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50rem;
+    height: max-content;
+    background-color: white;
+    z-index: +2;
+    overflow: scroll;
+}
+@media screen and (max-width:31.125em) {
+    .payment-intergration-ui{
+      width: 100vw;  
+    }  
+}
+
+
+
+

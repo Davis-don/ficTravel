@@ -1,0 +1,29 @@
+.overall-payment-intergration-section{
+padding: 2rem;
+}
+.overall-payment-intergration-section p{
+width: max-content;
+}
+.card-payment-image-container{
+width: 40rem;
+height: 20rem;
+margin: auto;
+background-image:url('../../assets/paymentcard.avif') ;
+background-size: cover; 
+ background-position: center;
+}
+@media screen and (max-width:25em){
+    .card-payment-image-container{
+        width: 100vw;
+    }    
+}
+.payment-text-box{
+padding-block: 2rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.payment-text-box h1{
+text-align: center;
+}

@@ -1,36 +1,68 @@
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
-import jwtMiddleware from '../controllers/JwtMiddleWear.js';
 
 const Routes = express.Router();
 const client = new PrismaClient();
 
-// Get a single user by ID
-Routes.get('/get-single-user', jwtMiddleware, async (req, res) => {
-    const userId = req.userId;
+// Function to fetch a single user by ID (using userId from URL params)
+const getUserById = Routes.get('/get-user/:userId', async (req, res) => {
+  const userId = req.params.userId;
 
-  // Validate ID
+  // Validate userId
   if (!userId) {
-    return res.status(400).json({ message: "ID is required" });
+    return res.status(400).json({ message: "User ID is required" });
   }
 
   try {
-    // Fetch user from the database
-    const user = await client.user.findFirst({
+    const user = await client.user.findUnique({
       where: { id: parseInt(userId, 10) },
+      select: {
+        id: true,
+        fullName: true,
+        userName: true,
+        email: true,
+        role: true,
+        createdAt: true,
+        updatedAt: true,
+        bookings: {
+          select: {
+            id: true,
+            fullName: true,
+            startDate: true,
+            endDate: true,
+            numberOfGuests: true,
+            dateOfBooking: true,
+            attractionName: true,
+            agent: { select: { fullName: true } }, // Fetch the agent assigned to this booking
+          },
+        },
+        allocatedBookings: {
+          select: {
+            id: true,
+            fullName: true,
+            startDate: true,
+            endDate: true,
+            numberOfGuests: true,
+            dateOfBooking: true,
+            attractionName: true,
+            user: { select: { fullName: true } }, // Fetch the user associated with this booking
+          },
+        },
+      },
     });
 
-    // Check if the user exists
+    // Check if user exists
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Send user as response
     res.status(200).json(user);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Could not query user" });
+    res.status(500).json({ message: "Could not fetch user data" });
   }
 });
 
-export default Routes;
+export default getUserById;
+
+

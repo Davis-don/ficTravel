@@ -1,33 +1,62 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
+// Prisma Client generator configuration
 generator client {
   provider = "prisma-client-js"
 }
 
+// PostgreSQL datasource configuration
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL") // Make sure DATABASE_URL is correctly set in your environment
 }
 
-enum Role{
+// Enum for roles to distinguish between ADMIN, USER, AGENT
+enum Role {
   ADMIN
   USER
   AGENT
 }
 
-model User{
-  id Int @id @default(autoincrement())
-  fullName String
-  userName String @unique 
-  email String @unique    
-  password String
-  role Role @default(USER)
-   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+// User model to store user information, including roles, bookings, and assigned agents
+model User {
+  id          Int      @id @default(autoincrement()) // Unique ID for each user
+  fullName    String   // Full name of the user
+  userName    String   @unique // Unique username
+  email       String   @unique // Unique email
+  password    String   // User password (should be hashed in real-world)
+  role        Role     @default(USER) // Role defaults to USER, can be ADMIN, USER, or AGENT
+  createdAt   DateTime @default(now()) // Created timestamp
+  updatedAt   DateTime @updatedAt // Automatically updated when any change occurs
 
   @@map("user_tbl")
+
+  // Relationships to bookings
+  bookings    Booking[] @relation("UserBookings") // Bookings made by the user
+  allocatedBookings Booking[] @relation("AgentBookings") // Bookings assigned to this agent (if role is AGENT)
 }
+
+// Booking model to store booking information
+model Booking {
+  id            Int      @id @default(autoincrement()) // Unique booking ID
+  fullName      String   // Name of the person making the booking
+  startDate     DateTime // Booking start date
+  endDate       DateTime // Booking end date
+  numberOfGuests Int     // Number of guests for the booking
+  dateOfBooking DateTime @default(now()) // Timestamp for when the booking was made
+  attractionName String   // Name of the attraction for the booking
+
+  // Financial details
+  bookingPrice  Float    // Total price for the booking
+  paidAmount    Float    // Amount paid by the user
+
+  // Relationships
+  userId        Int      // User making the booking
+  user          User     @relation("UserBookings", fields: [userId], references: [id], onDelete: Cascade) // User associated with the booking
+
+  agentId       Int?     // Nullable field for an agent (if no agent, it is null)
+  agent         User?    @relation("AgentBookings", fields: [agentId], references: [id]) // Optional agent assigned to the booking
+
+  @@map("booking_tbl") // Map to the booking_tbl in the database
+}
+
+
+

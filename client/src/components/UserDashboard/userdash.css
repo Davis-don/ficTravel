@@ -1,0 +1,24 @@
+.user-table{
+width: 100%;
+border: 1px solid white;
+}
+/* @media screen and (max-width:29.375em) {
+    .user-table{
+        width: 40rem;
+        overflow: scroll;
+    }
+} */
+.user-head-tbl{
+height: 5rem;
+background-color: orangered;
+}
+.user-head-tbl th{
+    font-size: 1.5rem;
+    text-align: center;
+    border-right: 1px solid white;
+}
+.user-table-body td{
+font-size: 1.5rem;
+text-align: center;
+border: 1px solid white;
+}

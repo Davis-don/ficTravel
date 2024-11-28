@@ -3,19 +3,18 @@ import './dashboard.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useQuery } from 'react-query';
 import { MdMenu } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
 import { IoIosNotifications } from "react-icons/io";
 import { useState,useEffect } from 'react';
 import App from '../features/Chatapp/App';
 import './useraccount.css'
+import Userdashboard from '../components/UserDashboard/Userdashboard';
+import { useNavigate } from 'react-router-dom';
 
-function  Userdashboard (){
-  return (
-    <div className="overall-userdasboard-container">
-    <h1 className='text-light'>Dashboard</h1>
-    </div>
-  )
-}
+
+
+
 
 function  Usermessages(){
   return (
@@ -30,11 +29,12 @@ function  Usermessages(){
 
 
 function Useraccount() {
+  const navigate = useNavigate()
   const [displaySide, setDisplaySide] = useState(true);
   const [userData,setUserData] = useState("")
   const [dasboard,setDashboard] = useState(true)
   const [message,setMessage] = useState(false)
-
+const [bookNow,setBookNow] = useState(false)
   // Use react-query to fetch user data
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['dashboardData'],
@@ -92,6 +92,15 @@ let component;
         </div>
         <div className="right-dash-header">
           <ul className='list-unstyled'>
+          <li className='clickable'>
+              <div className="icon-link-dash rounded-circle">
+                <FaMessage className='li-icon-dash' />
+              </div>
+              <div className="name-component-dash">
+                Messages
+              </div>
+            </li>
+ 
             <li className='clickable'>
               <div className="icon-link-dash rounded-circle">
                 <FaMessage className='li-icon-dash' />
@@ -136,8 +145,10 @@ let component;
               {/* Add navigation links here */}
                
      <ul className='list-unstyled'>
-      <li onClick={()=>{setDashboard(true);setMessage(false)}} className='text-light fs-4 clickable'>Dashboard</li>
-      <li onClick={()=>{setDashboard(false);setMessage(true)}} className='text-light fs-4 clickable'>Messages</li>
+     <li onClick={()=>navigate('/')} className='text-light fs-4 clickable'>Book Now</li>
+     {/* <li onClick={()=>{setDashboard(false);setMessage(false);setBookNow(true)}} className='text-light fs-4 clickable'>Book Now</li> */}
+      <li onClick={()=>{setDashboard(true);setMessage(false);setBookNow(false)}} className='text-light fs-4 clickable'>Dashboard</li>
+      <li onClick={()=>{setDashboard(false);setMessage(true);setBookNow(false)}} className='text-light fs-4 clickable'>Messages</li>
      </ul>
 
 

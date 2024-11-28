@@ -6,6 +6,7 @@ import { MdMenu } from "react-icons/md";
 import { FaMessage } from "react-icons/fa6";
 import { IoIosNotifications } from "react-icons/io";
 import { useState,useEffect } from 'react';
+import Agentdashboard from '../components/Agentdashboard/Agentdashboard';
 
 
 function Agentaccount() {
@@ -116,7 +117,7 @@ function Agentaccount() {
         )}
         {/* Right sidebar */}
         <div className="right-sidebar-body">
-          
+          <Agentdashboard/>
     
         </div>
       </div>

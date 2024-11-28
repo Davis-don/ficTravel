@@ -1,16 +1,28 @@
-import {create} from 'zustand'
-import {devtools,persist} from 'zustand/middleware'
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
 
-const userStore= (set)=>({
-    user:[],
+// Define the store logic
+const userStore = (set) => ({
+  user: null, // Assuming you're managing a single user; use {} if you need a default structure
 
-  addUser:(data)=>{
-    //add user now
-    set((state)=>({user:[data]}))
+  addUser: (data) => {
+    // Update user state with the new data
+    set(() => ({ user: data }));
+  },
 
-  }
-})
+  logout: () => {
+    // Clear user state
+    set(() => ({ user: null }));
+  },
+});
 
-const useUserStore = create(devtools(persist(userStore,{name:'user'})))
+// Create the store with middleware
+const useUserStore = create(
+  devtools(
+    persist(userStore, {
+      name: 'user', // Key for localStorage or sessionStorage
+    })
+  )
+);
 
 export default useUserStore;

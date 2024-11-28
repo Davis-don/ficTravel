@@ -1,0 +1,27 @@
+.overall-settings-page{
+height: 80vh;
+overflow: scroll;
+background-color: black;
+padding: 2rem;
+display: flex;
+flex-direction: column;
+gap: 2rem;
+}
+.settings-name-card{
+padding: 1.5rem;
+}
+.setting-content-div{
+display: flex;
+flex-direction: column;
+gap: 2rem;
+}
+.top-book-account-card{
+background-color: rgb(14, 218, 218);
+padding: 2rem;
+}
+.top-book-account-card p{
+font-size: 1.5rem;
+}
+.bottom-bookhut-account{
+padding: 2rem;
+}

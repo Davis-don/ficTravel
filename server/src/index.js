@@ -2,8 +2,14 @@ import express from "express";
 import cors from 'cors';  // For handling cross-origin requests
 import newUser from "./Routes/newUser.js";  // Import your route handlers
 import loginUser from "./Routes/loginUser.js";
-import getUser from "./Routes/singleUser.js";
-
+import getUserById from "./Routes/singleUser.js";
+import newBookingRequest from "./Routes/bookingRequest.js";
+import singleUserBooking from "./Routes/singleUserBookings.js";
+import singleAgentBooking from "./Routes/singleAgentBooking.js";
+import updatePersonalInfoDataById from "./Routes/updatePersonalInfoDataById.js";
+import updatePasswordById from "./Routes/PasswordUpdate.js";
+import deleteAccountById from "./Routes/deleteAccountById.js";
+import deleteBookingById from "./Routes/deleteBookingbyId.js";
 const app = express();
 
 // Use CORS to allow the frontend at http://localhost:5173 to make requests
@@ -18,7 +24,14 @@ app.use(express.json());
 // Set up your routes for user registration, login, and retrieving user data
 app.use('/', newUser);    // Handle POST request for new users
 app.use('/', loginUser);  // Handle POST request for user login
-app.use('/', getUser);    // Handle GET request to retrieve a user
+app.use('/', getUserById);    // Handle GET request to retrieve a user
+app.use('/',newBookingRequest);
+app.use('/',singleUserBooking)
+app.use('/',singleAgentBooking)
+app.use('/',updatePersonalInfoDataById)
+app.use('/',updatePasswordById)
+app.use('/',deleteAccountById)
+app.use('/',deleteBookingById)
 
 // Start the server on port 4000
 app.listen(4000, () => {
