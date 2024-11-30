@@ -1,0 +1,8 @@
+.ovaerall-agent-dash-link{
+padding: 2rem;
+}
+.overall-card-statistics{
+display: grid;
+grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+gap: 2rem;
+}

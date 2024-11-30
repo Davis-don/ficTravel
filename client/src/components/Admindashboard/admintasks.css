@@ -1,0 +1,62 @@
+/* Ensure the tables are centered and the text is enlarged */
+.table {
+    font-size: 1.2rem;  /* Increase font size */
+    width: 100%;
+  }
+  
+  .table th, .table td {
+    padding: 1rem;  /* Increase cell padding */
+  }
+  
+  .table th {
+    font-size: 1.1rem;  /* Slightly larger font for table headers */
+    background-color: #343a40;  /* Dark background for header */
+    color: white;  /* White text for table headers */
+  }
+  
+  .table td {
+    vertical-align: middle;  /* Center content vertically */
+  }
+  
+  /* Color for table rows on hover */
+  .table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Style for tables with border and striped rows */
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;  /* Light grey for odd rows */
+  }
+  
+  .table-bordered {
+    border: 1px solid #ddd;  /* Add borders between cells */
+  }
+  
+  .thead-dark th {
+    background-color: #343a40 !important;
+    color: white;
+  }
+  
+  /* Add some margin to the top of each table */
+  .tasks-allocation-table-active, .task-allocation-table-inactive {
+    margin-bottom: 30px;
+  }
+  
+  /* Center the headings */
+  h1 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .mt-5 {
+    margin-top: 3rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+  

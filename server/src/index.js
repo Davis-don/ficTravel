@@ -10,6 +10,8 @@ import updatePersonalInfoDataById from "./Routes/updatePersonalInfoDataById.js";
 import updatePasswordById from "./Routes/PasswordUpdate.js";
 import deleteAccountById from "./Routes/deleteAccountById.js";
 import deleteBookingById from "./Routes/deleteBookingbyId.js";
+import getAllBookings from "./Routes/getAllBookings.js";
+import fetchAllUsersWithRoleUser from "./Routes/fetchAllUsers.js";
 const app = express();
 
 // Use CORS to allow the frontend at http://localhost:5173 to make requests
@@ -32,6 +34,8 @@ app.use('/',updatePersonalInfoDataById)
 app.use('/',updatePasswordById)
 app.use('/',deleteAccountById)
 app.use('/',deleteBookingById)
+app.use('/',getAllBookings)
+app.use('/',fetchAllUsersWithRoleUser)
 
 // Start the server on port 4000
 app.listen(4000, () => {

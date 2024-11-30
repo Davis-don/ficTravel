@@ -9,9 +9,11 @@ import useUserStore from '../store/userStore';
 import useFormStore from '../store/userFormStore';
 import { useMutation } from 'react-query';
 import usehotelListItinerary from '../store/basketList';
+import { useNavigate } from 'react-router-dom';
 
 function Recommendedreadpg() {
   const userData = useUserStore((state) => state.user);
+  const navigate = useNavigate()
   
   const toggleForm = useFormStore((state) => state.toggleForm);
   const setHotelList = usehotelListItinerary((state) => state.addHotelItinerary);
@@ -57,6 +59,9 @@ console.log(attraction.representativePrice)
         position: "top-right",
         autoClose: 3000,
       });
+      setTimeout(() => {
+        navigate("/")
+      }, 3000);
     },
     onError: (err) => {
       toast.error(err.message || 'Something went wrong.', {
@@ -78,6 +83,7 @@ console.log(attraction.representativePrice)
     }
 
     mutate(booking);
+    
   };
 
   return (

@@ -1,0 +1,11 @@
+.overall-dash-card-container{
+height: 13rem;
+}
+.overall-dash-card-container h4{
+text-align: center;
+padding: 1rem;
+}
+.overall-dash-card-container h5{
+    text-align: center;
+    font-size: 4rem;
+}

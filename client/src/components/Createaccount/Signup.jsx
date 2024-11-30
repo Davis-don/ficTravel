@@ -21,6 +21,7 @@ function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
+    role:"ADMIN"
   });
 
   let handleChange = (e) => {

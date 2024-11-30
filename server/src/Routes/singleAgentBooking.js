@@ -5,7 +5,6 @@ const Routes = express.Router();
 const client = new PrismaClient();
 
 // Function to fetch all bookings for a single agent (using agentId from URL params)
-// Function to fetch all bookings for a certain agent
 const singleAgentBooking = Routes.get('/get-agent-bookings/:agentId', async (req, res) => {
   const agentId = req.params.agentId;
 
@@ -15,13 +14,14 @@ const singleAgentBooking = Routes.get('/get-agent-bookings/:agentId', async (req
   }
 
   try {
-    // Fetch bookings for a specific agent, including the user fullName
+    // Fetch bookings for a specific agent, including the user fullName and email
     const bookings = await client.booking.findMany({
       where: { agentId: parseInt(agentId, 10) },
       include: {
         user: {
           select: {
-            fullName: true,  // Include the user's full name
+            fullName: true, // Include the user's full name
+            email: true,    // Include the user's email
           }
         },
       },
@@ -40,5 +40,5 @@ const singleAgentBooking = Routes.get('/get-agent-bookings/:agentId', async (req
   }
 });
 
-
 export default singleAgentBooking;
+

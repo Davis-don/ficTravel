@@ -1,0 +1,18 @@
+.task-table{
+width: 100%;
+border: 1px solid black;
+}
+.task-table thead{
+background-color: orangered;
+height: 5rem;
+color: white;
+width: 100%;
+font-size: 1.5rem;
+}
+.task-table tr{
+border: 1px solid black;
+height: 3rem;
+}
+.task-table td{
+border: 1px solid black;
+}

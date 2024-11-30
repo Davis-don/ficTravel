@@ -1,130 +1,145 @@
 import React from 'react'
-import './dashboard.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useQuery } from 'react-query';
-import { MdMenu } from "react-icons/md";
-import { FaMessage } from "react-icons/fa6";
-import { IoIosNotifications } from "react-icons/io";
-import { useState,useEffect } from 'react';
-import './admin.css'
+import './agentaccount.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { FaBookAtlas,FaRegMessage } from "react-icons/fa6";
+import { MdDashboard,MdLightMode } from "react-icons/md";
+import { VscTasklist } from "react-icons/vsc";
+import { IoMdSettings,IoIosLogOut } from "react-icons/io";
+import Admindash from '../components/Admindashboard/Admindash';
+import Admintasks from '../components/Admindashboard/Admintasks';
 
+
+import Agentmessaging from '../components/Agentdashboard/Agentmessaging';
+import Agentsettings from '../components/Agentdashboard/Agentsettings';
+import { IoMdClose } from "react-icons/io";
+import { useState } from 'react';
+import useUserStore from '../store/userStore';
+import {useNavigate} from 'react-router-dom'
+import { MdMenu } from "react-icons/md";
 
 function Adminaccount() {
-  const [displaySide, setDisplaySide] = useState(true);
-  const [userData,setUserData] = useState("")
-
-  // Use react-query to fetch user data
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ['dashboardData'],
-    queryFn: async () => {
-      const token = sessionStorage.getItem('authToken')
-      const response = await fetch('http://localhost:4000/get-single-user',{
-        method:"GET",
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `${token}`, 
-        },
-      }); 
-      if (!response.ok) {
-        throw new Error('Failed to fetch dashboard data');
-      }
-      return response.json(); 
-    }
-  });
-
-  
-  useEffect(() => {
-    if (data) {
-      setUserData(data);
-    }
-  }, [data]);
-  if (isLoading) {
-    return <div>Loading dashboard data...</div>;
-  }
-
-  if (isError) {
-    return <div>Error loading data: {error.message}</div>;
-  }
-
-
-  console.log(data)
-  return (
-    <div className='overrall-dashboard-page'>
-      {/* Header dashboard */}
-      <div className="dash-header ">
-        <div
-          className="left-dash-header rounded-circle clickable"
-          onClick={() => setDisplaySide(!displaySide)}
-        >
-          <h3 className='menu-icon-dash'><MdMenu /></h3>
-        </div>
-        <div className="right-dash-header">
-          <ul className='list-unstyled'>
-            <li className='clickable'>
-              <div className="icon-link-dash rounded-circle">
-                <FaMessage className='li-icon-dash' />
-              </div>
-              <div className="name-component-dash">
-                Messages
-              </div>
-            </li>
-            <li className='clickable'>
-              <div className="icon-link-dash rounded-circle">
-                <IoIosNotifications className='li-icon-dash fs-2' />
-              </div>
-              <div className="name-component-dash">
-                Notification
-              </div>
-            </li>
-            <li className='clickable'>
-              <div className="icon-link-dash rounded-circle bg-light avatar-header-dash">
-              </div>
-              <div className="name-component-dash">
-                {userData.fullName}
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      {/* End of header dash */}
-
-      <div className="dash-body">
-        {/* Left dash body */}
-        {displaySide && (
-          <div className="left-sidebar-dashboard">
-            <div className="user-account-dash-div">
-              <div className="avatar-section-dash rounded-circle">
-              </div>
-              <div className="avatar-description-container">
-                <h4 className='text-light'>{userData.fullName}</h4>
-                <h5 className='text-secondary'>{userData.role}</h5>
-              </div>
-            </div>
-            <div className="nav-links-listing-dash">
-              {/* Add navigation links here */}
-               <ul className='list-unstyled'>
-                <li className='text-light fs-4 clickable'>Dashboard</li>
-               </ul>
-            
-
-
-
-
-               
-
-
-
-            </div>
-          </div>
-        )}
-        {/* Right sidebar */}
-        <div className="right-sidebar-body">
-          
-    
-        </div>
-      </div>
-    </div>
-  );
+  const logout = useUserStore((state)=>state.logout)
+  const navigate = useNavigate()
+const [dashDisplay,setDashDisplay] = useState(true)
+const [tasks,setTasks] = useState(false)
+const [messaging,setMesaging] = useState(false)
+const [settings,setSettings] = useState(false)
+const [sidebar,setSidebar]=useState(true)
+const activeLink = {
+backgroundColor:"white",
+width:"13rem",
+height:"4rem",
+paddingInline:"1rem",
+border:"1px solid black",
+borderRadius:"5px"
 }
 
-export default Adminaccount;
+let renderedComponent;
+if(dashDisplay){
+renderedComponent = <Admindash/>
+}
+else if(tasks){
+  renderedComponent = <Admintasks/>
+}
+else if(messaging){
+  renderedComponent = <Agentmessaging/>
+}
+else if (settings){
+  renderedComponent = <Agentsettings/>
+}
+
+
+const handleLogout = ()=>{
+  logout();
+  navigate('/')
+}
+  return (
+    <div className='overall-agent-acount-page'>
+
+      
+    {sidebar && 
+     <div className="left-side-agent-account small-screen-side-agent bg-light">
+        <h1 className='close-btn right-side-header-agent'><IoMdClose className='fs-1' onClick={()=>setSidebar(!sidebar)}/></h1>
+         <div  className="left-side-agent-header">
+             <div className="icon-logo-accout-agent"><FaBookAtlas className='fs-1'/></div>
+             <div className="logo-name-agent-account"><h4 className='h3'>Bookhut</h4></div>
+         </div>
+         <div className="left-side-agent-body">
+          <div className="agent-general-menu">
+            <h5 className='text-secondary'>General Menu</h5>
+            <ul className='list-unstyled'>
+              <li className='clickable ' onClick={()=>{setDashDisplay(true);setTasks(false);setMesaging(false);setSettings(false);setSidebar(false)}}  style={dashDisplay ? activeLink : {}} ><span><MdDashboard className='fs-3' /></span><span    className={dashDisplay?"text-dark fs-4":"fs-4 text-secondary"}>Dashboard</span></li>
+              <li className='clickable' onClick={()=>{setDashDisplay(false);setTasks(true);setMesaging(false);setSettings(false);setSidebar(false)}}  style={tasks ? activeLink : {}}  ><span><VscTasklist className='fs-3' /></span><span className={tasks?"text-dark fs-4":"fs-4 text-secondary"}>Tasks</span></li>
+              <li className='clickable'  onClick={()=>{setDashDisplay(false);setTasks(false);setMesaging(true);setSettings(false);setSidebar(false)}} style={messaging ? activeLink : {}}><span><FaRegMessage className='fs-3' /></span><span className={messaging?"text-dark fs-4":"fs-4 text-secondary"}>Messaging</span></li>
+            </ul>
+          </div>
+          <div className="agent-support-menu">
+          <div className="agent-general-menu">
+            <h5 className='text-secondary'>Support</h5>
+            <ul className='list-unstyled'>
+              <li className="clickable" onClick={()=>{setDashDisplay(false);setTasks(false);setMesaging(false);setSettings(true);setSidebar(false)}} style={settings ? activeLink : {}}><span><IoMdSettings className='fs-3' /></span><span className='fs-4 text-secondary'>Settings</span></li>
+              <li onClick={handleLogout} className='clickable'><span><IoIosLogOut className='fs-3' /></span><span className='fs-4 text-secondary'>Logout</span></li>
+            </ul>
+          </div>
+          </div>
+         </div>
+         
+         <div className="left-side-footer-agent">
+         <h3 className='clickable'><span><MdLightMode className='fs-3' /></span><span className='fs-4 text-secondary'>Light mode</span></h3>
+         </div>
+      </div>}
+      
+
+
+    {/* Large screen */}
+    {
+     <div className="left-side-agent-account large-screen-side-agent bg-light">
+        <h1 className='close-btn right-side-header-agent'><IoMdClose className='fs-1' onClick={()=>setSidebar(!sidebar)}/></h1>
+         <div  className="left-side-agent-header">
+             <div className="icon-logo-accout-agent"><FaBookAtlas className='fs-1'/></div>
+             <div className="logo-name-agent-account"><h4 className='h3'>Bookhut</h4></div>
+         </div>
+         <div className="left-side-agent-body">
+          <div className="agent-general-menu">
+            <h5 className='text-secondary'>General Menu</h5>
+            <ul className='list-unstyled'>
+              <li className='clickable ' onClick={()=>{setDashDisplay(true);setTasks(false);setMesaging(false);setSettings(false);setSidebar(false)}}  style={dashDisplay ? activeLink : {}} ><span><MdDashboard className='fs-3' /></span><span    className={dashDisplay?"text-dark fs-4":"fs-4 text-secondary"}>Dashboard</span></li>
+              <li className='clickable' onClick={()=>{setDashDisplay(false);setTasks(true);setMesaging(false);setSettings(false);setSidebar(false)}}  style={tasks ? activeLink : {}}  ><span><VscTasklist className='fs-3' /></span><span className={tasks?"text-dark fs-4":"fs-4 text-secondary"}>Tasks</span></li>
+              <li className='clickable'  onClick={()=>{setDashDisplay(false);setTasks(false);setMesaging(true);setSettings(false);setSidebar(false)}} style={messaging ? activeLink : {}}><span><FaRegMessage className='fs-3' /></span><span className={messaging?"text-dark fs-4":"fs-4 text-secondary"}>Messaging</span></li>
+            </ul>
+          </div>
+          <div className="agent-support-menu">
+          <div className="agent-general-menu">
+            <h5 className='text-secondary'>Support</h5>
+            <ul className='list-unstyled'>
+              <li className="clickable" onClick={()=>{setDashDisplay(false);setTasks(false);setMesaging(false);setSettings(true);setSidebar(false)}} style={settings ? activeLink : {}}><span><IoMdSettings className='fs-3' /></span><span className='fs-4 text-secondary'>Settings</span></li>
+              <li onClick={handleLogout} className='clickable'><span><IoIosLogOut className='fs-3' /></span><span className='fs-4 text-secondary'>Logout</span></li>
+            </ul>
+          </div>
+          </div>
+         </div>
+         
+         <div className="left-side-footer-agent">
+         <h3 className='clickable'><span><MdLightMode className='fs-3' /></span><span className='fs-4 text-secondary'>Light mode</span></h3>
+         </div>
+      </div>}
+
+
+
+
+
+
+
+
+      <div className="right-side-agent-account">
+        <div className="right-side-header-agent">
+          <MdMenu onClick={()=>setSidebar(!sidebar)} className='menu-bar-agent'/>
+        </div>
+       {renderedComponent}
+      </div>
+      </div>
+    
+  )
+}
+
+export default Adminaccount
