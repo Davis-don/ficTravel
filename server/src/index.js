@@ -12,6 +12,9 @@ import deleteAccountById from "./Routes/deleteAccountById.js";
 import deleteBookingById from "./Routes/deleteBookingbyId.js";
 import getAllBookings from "./Routes/getAllBookings.js";
 import fetchAllUsersWithRoleUser from "./Routes/fetchAllUsers.js";
+import fetchAllAgents from "./Routes/fetchAllAgents.js";
+import createOrUpdateTestimonial from "./Routes/addComment.js";
+import fetchAllTestimonials from "./Routes/getAllComments.js";
 const app = express();
 
 // Use CORS to allow the frontend at http://localhost:5173 to make requests
@@ -36,7 +39,9 @@ app.use('/',deleteAccountById)
 app.use('/',deleteBookingById)
 app.use('/',getAllBookings)
 app.use('/',fetchAllUsersWithRoleUser)
-
+app.use('/',fetchAllAgents)
+app.use('/',createOrUpdateTestimonial)
+app.use('/',fetchAllTestimonials)
 // Start the server on port 4000
 app.listen(4000, () => {
   console.log("Server running at port 4000");

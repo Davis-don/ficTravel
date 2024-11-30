@@ -18,45 +18,55 @@ enum Role {
 
 // User model to store user information, including roles, bookings, and assigned agents
 model User {
-  id          Int      @id @default(autoincrement()) // Unique ID for each user
-  fullName    String   // Full name of the user
-  userName    String   @unique // Unique username
-  email       String   @unique // Unique email
-  password    String   // User password (should be hashed in real-world)
-  role        Role     @default(USER) // Role defaults to USER, can be ADMIN, USER, or AGENT
-  createdAt   DateTime @default(now()) // Created timestamp
-  updatedAt   DateTime @updatedAt // Automatically updated when any change occurs
+  id              Int      @id @default(autoincrement()) // Unique ID for each user
+  fullName        String   // Full name of the user
+  userName        String   @unique // Unique username
+  email           String   @unique // Unique email
+  password        String   // User password (should be hashed in real-world)
+  role            Role     @default(USER) // Role defaults to USER, can be ADMIN, USER, or AGENT
+  createdAt       DateTime @default(now()) // Created timestamp
+  updatedAt       DateTime @updatedAt // Automatically updated when any change occurs
 
   @@map("user_tbl")
 
   // Relationships to bookings
-  bookings    Booking[] @relation("UserBookings") // Bookings made by the user
+  bookings        Booking[] @relation("UserBookings") // Bookings made by the user
   allocatedBookings Booking[] @relation("AgentBookings") // Bookings assigned to this agent (if role is AGENT)
+  testimonials    Testimonial[]
 }
 
 // Booking model to store booking information
 model Booking {
-  id            Int      @id @default(autoincrement()) // Unique booking ID
-  fullName      String   // Name of the person making the booking
-  startDate     DateTime // Booking start date
-  endDate       DateTime // Booking end date
-  numberOfGuests Int     // Number of guests for the booking
-  dateOfBooking DateTime @default(now()) // Timestamp for when the booking was made
-  attractionName String   // Name of the attraction for the booking
+  id              Int      @id @default(autoincrement()) // Unique booking ID
+  fullName        String   // Name of the person making the booking
+  startDate       DateTime // Booking start date
+  endDate         DateTime // Booking end date
+  numberOfGuests  Int      // Number of guests for the booking
+  dateOfBooking    DateTime @default(now()) // Timestamp for when the booking was made
+  attractionName   String   // Name of the attraction for the booking
 
   // Financial details
-  bookingPrice  Float    // Total price for the booking
-  paidAmount    Float    // Amount paid by the user
+  bookingPrice     Float    // Total price for the booking
+  paidAmount       Float    // Amount paid by the user
 
   // Relationships
-  userId        Int      // User making the booking
-  user          User     @relation("UserBookings", fields: [userId], references: [id], onDelete: Cascade) // User associated with the booking
+  userId          Int
+  user            User     @relation("UserBookings", fields: [userId], references: [id], onDelete: Cascade) // User associated with the booking
 
-  agentId       Int?     // Nullable field for an agent (if no agent, it is null)
-  agent         User?    @relation("AgentBookings", fields: [agentId], references: [id]) // Optional agent assigned to the booking
+  agentId         Int?     // Nullable field for an agent (if no agent, it is null)
+  agent           User?    @relation("AgentBookings", fields: [agentId], references: [id]) // Optional agent assigned to the booking
 
   @@map("booking_tbl") // Map to the booking_tbl in the database
 }
 
+// Testimonial model to capture user feedback
+model Testimonial {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-
+  @@map("testimonial_tbl")
+}
