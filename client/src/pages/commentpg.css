@@ -1,0 +1,19 @@
+.overall-comment-page{
+height: 100vh;
+padding: 1rem;
+}
+.form-div-comment{
+
+}
+.form-div-comment form{
+
+}
+.comment-text-area-input{
+border: 0px;
+height:30vh;
+}
+.send-comment-btn{
+width: max-content;
+margin: auto;
+padding: 1rem;
+}

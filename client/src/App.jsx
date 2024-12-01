@@ -13,6 +13,7 @@ import Settingspg from './pages/Settingspg';
 // Import ToastContainer and toast styles
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Commentpage from './pages/Commentpage';
 
 function App() {
   const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<Layout><Homepage /></Layout>} />
             <Route path="/recommended" element={<Layout><Recommendedreadpg /></Layout>} />
             <Route path="/manage/bookings" element={<Layout><Bookingspg /></Layout>} />
+            <Route path="/comment" element={<Layout><Commentpage /></Layout>} />
             <Route path="/settings" element={<Layout><Settingspg /></Layout>} />
             <Route path="/user/account" element={<Useraccount />} />
             <Route path="/admin/account" element={<Adminaccount />} />

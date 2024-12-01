@@ -4,8 +4,10 @@ import { useMutation } from 'react-query';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useFormStore from '../../store/userFormStore';
 
-function Signup() {
+function Signup({register}) {
+  const toggleForm = useFormStore((state)=>state.toggleForm)
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [errorMessage, setErrorMessage] = useState({
     statusOk: false,
@@ -21,7 +23,7 @@ function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
-    role:"ADMIN"
+    role:register
   });
 
   let handleChange = (e) => {
@@ -85,6 +87,10 @@ function Signup() {
     e.preventDefault();
     if (signupData.password === signupData.confirmPassword) {
       mutate(signupData);
+      setTimeout(() => {
+        toggleForm()
+      }, 3000);
+      
       return;
     } else {
       setPasswordMatch(true);

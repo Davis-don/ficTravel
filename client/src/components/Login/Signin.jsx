@@ -109,7 +109,7 @@ function Signin() {
           type='password'
           placeholder='Password'
         />
-        <button className='btn bg-primary text-light fs-4' type='submit'>
+        <button  className='btn bg-primary text-light fs-4' type='submit'>
           Log in
         </button>
       </form>

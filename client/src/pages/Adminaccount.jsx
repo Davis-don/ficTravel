@@ -7,9 +7,7 @@ import { VscTasklist } from "react-icons/vsc";
 import { IoMdSettings,IoIosLogOut } from "react-icons/io";
 import Admindash from '../components/Admindashboard/Admindash';
 import Admintasks from '../components/Admindashboard/Admintasks';
-
-
-import Agentmessaging from '../components/Agentdashboard/Agentmessaging';
+import Admincontrols from '../components/Admindashboard/Admincontrol';
 import Agentsettings from '../components/Agentdashboard/Agentsettings';
 import { IoMdClose } from "react-icons/io";
 import { useState } from 'react';
@@ -22,7 +20,7 @@ function Adminaccount() {
   const navigate = useNavigate()
 const [dashDisplay,setDashDisplay] = useState(true)
 const [tasks,setTasks] = useState(false)
-const [messaging,setMesaging] = useState(false)
+const [Admincontrol,setAdminControl] = useState(false)
 const [settings,setSettings] = useState(false)
 const [sidebar,setSidebar]=useState(true)
 const activeLink = {
@@ -41,8 +39,8 @@ renderedComponent = <Admindash/>
 else if(tasks){
   renderedComponent = <Admintasks/>
 }
-else if(messaging){
-  renderedComponent = <Agentmessaging/>
+else if(Admincontrol){
+  renderedComponent = <Admincontrols/>
 }
 else if (settings){
   renderedComponent = <Agentsettings/>
@@ -68,16 +66,16 @@ const handleLogout = ()=>{
           <div className="agent-general-menu">
             <h5 className='text-secondary'>General Menu</h5>
             <ul className='list-unstyled'>
-              <li className='clickable ' onClick={()=>{setDashDisplay(true);setTasks(false);setMesaging(false);setSettings(false);setSidebar(false)}}  style={dashDisplay ? activeLink : {}} ><span><MdDashboard className='fs-3' /></span><span    className={dashDisplay?"text-dark fs-4":"fs-4 text-secondary"}>Dashboard</span></li>
-              <li className='clickable' onClick={()=>{setDashDisplay(false);setTasks(true);setMesaging(false);setSettings(false);setSidebar(false)}}  style={tasks ? activeLink : {}}  ><span><VscTasklist className='fs-3' /></span><span className={tasks?"text-dark fs-4":"fs-4 text-secondary"}>Tasks</span></li>
-              <li className='clickable'  onClick={()=>{setDashDisplay(false);setTasks(false);setMesaging(true);setSettings(false);setSidebar(false)}} style={messaging ? activeLink : {}}><span><FaRegMessage className='fs-3' /></span><span className={messaging?"text-dark fs-4":"fs-4 text-secondary"}>Messaging</span></li>
+              <li className='clickable ' onClick={()=>{setDashDisplay(true);setTasks(false);setAdminControl(false);setSettings(false);setSidebar(false)}}  style={dashDisplay ? activeLink : {}} ><span><MdDashboard className='fs-3' /></span><span    className={dashDisplay?"text-dark fs-4":"fs-4 text-secondary"}>Dashboard</span></li>
+              <li className='clickable' onClick={()=>{setDashDisplay(false);setTasks(true);setAdminControl(false);setSettings(false);setSidebar(false)}}  style={tasks ? activeLink : {}}  ><span><VscTasklist className='fs-3' /></span><span className={tasks?"text-dark fs-4":"fs-4 text-secondary"}>Tasks</span></li>
+              <li className='clickable'  onClick={()=>{setDashDisplay(false);setTasks(false);setAdminControl(true);setSettings(false);setSidebar(false)}} style={Admincontrol ? activeLink : {}}><span><FaRegMessage className='fs-3' /></span><span className={Admincontrol?"text-dark fs-4":"fs-4 text-secondary"}>Control</span></li>
             </ul>
           </div>
           <div className="agent-support-menu">
           <div className="agent-general-menu">
             <h5 className='text-secondary'>Support</h5>
             <ul className='list-unstyled'>
-              <li className="clickable" onClick={()=>{setDashDisplay(false);setTasks(false);setMesaging(false);setSettings(true);setSidebar(false)}} style={settings ? activeLink : {}}><span><IoMdSettings className='fs-3' /></span><span className='fs-4 text-secondary'>Settings</span></li>
+              <li className="clickable" onClick={()=>{setDashDisplay(false);setTasks(false);setAdminControl(false);setSettings(true);setSidebar(false)}} style={settings ? activeLink : {}}><span><IoMdSettings className='fs-3' /></span><span className='fs-4 text-secondary'>Settings</span></li>
               <li onClick={handleLogout} className='clickable'><span><IoIosLogOut className='fs-3' /></span><span className='fs-4 text-secondary'>Logout</span></li>
             </ul>
           </div>
@@ -103,16 +101,16 @@ const handleLogout = ()=>{
           <div className="agent-general-menu">
             <h5 className='text-secondary'>General Menu</h5>
             <ul className='list-unstyled'>
-              <li className='clickable ' onClick={()=>{setDashDisplay(true);setTasks(false);setMesaging(false);setSettings(false);setSidebar(false)}}  style={dashDisplay ? activeLink : {}} ><span><MdDashboard className='fs-3' /></span><span    className={dashDisplay?"text-dark fs-4":"fs-4 text-secondary"}>Dashboard</span></li>
-              <li className='clickable' onClick={()=>{setDashDisplay(false);setTasks(true);setMesaging(false);setSettings(false);setSidebar(false)}}  style={tasks ? activeLink : {}}  ><span><VscTasklist className='fs-3' /></span><span className={tasks?"text-dark fs-4":"fs-4 text-secondary"}>Tasks</span></li>
-              <li className='clickable'  onClick={()=>{setDashDisplay(false);setTasks(false);setMesaging(true);setSettings(false);setSidebar(false)}} style={messaging ? activeLink : {}}><span><FaRegMessage className='fs-3' /></span><span className={messaging?"text-dark fs-4":"fs-4 text-secondary"}>Messaging</span></li>
+              <li className='clickable ' onClick={()=>{setDashDisplay(true);setTasks(false);setAdminControl(false);setSettings(false);setSidebar(false)}}  style={dashDisplay ? activeLink : {}} ><span><MdDashboard className='fs-3' /></span><span    className={dashDisplay?"text-dark fs-4":"fs-4 text-secondary"}>Dashboard</span></li>
+              <li className='clickable' onClick={()=>{setDashDisplay(false);setTasks(true);setAdminControl(false);setSettings(false);setSidebar(false)}}  style={tasks ? activeLink : {}}  ><span><VscTasklist className='fs-3' /></span><span className={tasks?"text-dark fs-4":"fs-4 text-secondary"}>Tasks</span></li>
+              <li className='clickable'  onClick={()=>{setDashDisplay(false);setTasks(false);setAdminControl(true);setSettings(false);setSidebar(false)}} style={Admincontrol ? activeLink : {}}><span><FaRegMessage className='fs-3' /></span><span className={Admincontrol?"text-dark fs-4":"fs-4 text-secondary"}>Control</span></li>
             </ul>
           </div>
           <div className="agent-support-menu">
           <div className="agent-general-menu">
             <h5 className='text-secondary'>Support</h5>
             <ul className='list-unstyled'>
-              <li className="clickable" onClick={()=>{setDashDisplay(false);setTasks(false);setMesaging(false);setSettings(true);setSidebar(false)}} style={settings ? activeLink : {}}><span><IoMdSettings className='fs-3' /></span><span className='fs-4 text-secondary'>Settings</span></li>
+              <li className="clickable" onClick={()=>{setDashDisplay(false);setTasks(false);setAdminControl(false);setSettings(true);setSidebar(false)}} style={settings ? activeLink : {}}><span><IoMdSettings className='fs-3' /></span><span className='fs-4 text-secondary'>Settings</span></li>
               <li onClick={handleLogout} className='clickable'><span><IoIosLogOut className='fs-3' /></span><span className='fs-4 text-secondary'>Logout</span></li>
             </ul>
           </div>

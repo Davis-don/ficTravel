@@ -73,6 +73,7 @@ function Header() {
                 <ul className='list-unstyled'>
                     <li style={window.location.pathname === "/manage/bookings"?{color:"orangered"}:{}} onClick={()=>{navigate("/manage/bookings");setAuthLog(!authLog)}} className='clickable'>Manage Bookings</li>
                     <li style={window.location.pathname === "/settings"?{color:"orangered"}:{}}  onClick={()=>{navigate("/settings");setAuthLog(!authLog)}} className='clickable'>Settings</li>
+                    <li style={window.location.pathname === "/comment"?{color:"orangered"}:{}}  onClick={()=>{navigate("/comment");setAuthLog(!authLog)}} className='clickable'>Comment</li>
                     <li onClick={()=>handleLogoutLogic()} className='clickable'>Logout</li>
                 </ul>
             </div>

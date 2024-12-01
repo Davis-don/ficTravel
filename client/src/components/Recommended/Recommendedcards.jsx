@@ -16,7 +16,7 @@ function Recommendedcards() {
 
   return (
     <>
-      <h2 style={{ textAlign: "center" }}>Request Count: {requestCount}</h2>
+      {/* <h2 style={{ textAlign: "center" }}>Request Count: {requestCount}</h2> */}
       <div className='overall-recommended-cards-container'>
         {
           data?.data?.products?.map((attraction) => (

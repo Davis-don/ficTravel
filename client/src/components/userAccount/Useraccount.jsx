@@ -27,7 +27,7 @@ function Useraccount() {
         </div>
         <div className="user-component-body">
       {
-        signup && <Signup/>
+        signup && <Signup register="USER"/>
       }
         {
         signin && <Signin/>
